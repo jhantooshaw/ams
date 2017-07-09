@@ -58,6 +58,6 @@ production:
   database: ams_production
   pool: 5
   host: postgresql-amorphous-51245
-  #username: myapp
-  #password: password1
+  username: ggekmhhslcbyis
+  password: 5bf2e4a196754e8bb8546e0292ae9daee7b7e624a4714cddeba577fb072b9692
 
