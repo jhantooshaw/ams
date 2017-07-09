@@ -15,8 +15,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: password
-  #socket: /var/run/mysqld/mysqld.sock
-  
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
@@ -48,9 +47,16 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
+#production:
+#  <<: *default
+#  database: ams_production
+#  username: ams
+#  password: <%= ENV['AMS_DATABASE_PASSWORD'] %>
 production:
-  <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: ams_production
-  username: ams
-  password: ''
-  host: localhost
+  pool: 5
+  #username: myapp
+  #password: password1
+
