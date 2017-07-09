@@ -16,6 +16,7 @@ default: &default
   username: root
   password: password
   #socket: /var/run/mysqld/mysqld.sock
+  
 
 development:
   <<: *default
@@ -52,3 +53,4 @@ production:
   database: ams_production
   username: ams
   password: ''
+  host: 127.0.0.1
