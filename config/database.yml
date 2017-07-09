@@ -47,17 +47,8 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-#production:
-#  <<: *default
-#  database: ams_production
-#  username: ams
-#  password: <%= ENV['AMS_DATABASE_PASSWORD'] %>
 production:
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
   database: ams_production
-  pool: 5
-  host: postgresql-amorphous-51245
-  username: ggekmhhslcbyis
-  password: 5bf2e4a196754e8bb8546e0292ae9daee7b7e624a4714cddeba577fb072b9692
-
+  username: ams
+  password: <%= ENV['AMS_DATABASE_PASSWORD'] %>
