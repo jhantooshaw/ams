@@ -57,7 +57,7 @@ production:
   encoding: unicode
   database: ams_production
   pool: 5
-  host: localhost
+  host: 127.0.0.1
   #username: myapp
   #password: password1
 
