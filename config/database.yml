@@ -51,4 +51,4 @@ production:
   <<: *default
   database: ams_production
   username: ams
-  password: <%= ENV['AMS_DATABASE_PASSWORD'] %>
+  password: ''
