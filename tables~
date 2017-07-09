@@ -1,0 +1,9 @@
+users: email, password, encrypted_password, mobile_number
+
+addresses: user_id/contact_id, name, address, city, state, country, pin
+
+asset_types constant: cr, dr
+
+contacts: name, mobile_number, mobile_number_2, mobile_number_3, user_id
+
+m_transactions: user_id, contact_id, amount, asset_type_id, transaction_date, is_deleted

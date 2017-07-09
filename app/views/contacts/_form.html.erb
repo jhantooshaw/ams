@@ -1,0 +1,87 @@
+<style type="text/css">
+  label .error{
+    color:#ff0000;
+  }
+</style>
+<%= form_for @contact, html: {class: "form-horizontal", id: 'contact_form' } do |f| %>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Name</label>
+      <div class="col-sm-6">
+        <%= f.text_field :name, class: "form-control"    %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">Email</label>
+        <div class="col-sm-6">
+          <%= f.email_field :email, class: "form-control"    %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Mobile Number 1</label>
+          <div class="col-sm-6">
+            <%= f.text_field :mobile_number_1, maxlength: 10, class: "form-control"    %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Mobile Number 2</label>
+            <div class="col-sm-6">
+              <%= f.text_field :mobile_number_2, maxlength: 10, class: "form-control"    %>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Mobile Number 3</label>
+              <div class="col-sm-6">
+                <%= f.text_field :mobile_number_3,maxlength: 10, class: "form-control"    %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-6">
+                  <%= f.submit class: 'btn btn-primary' %>
+                  </div>
+                </div>
+
+              <%end%>
+
+
+              <script type="text/javascript">
+                $(document).ready(function() {
+                  $("#contact_form").validate({
+                    rules: {
+                      'contact[name]': {
+                        required: true
+                      },
+                      'contact[email]': {
+                        //required: true,
+                        email: true
+                      },
+                      'contact[mobile_number_1]': {
+                        required: true,
+                        number: true,
+                        minlength: 10,
+                        maxlength: 10
+                      }
+                    },
+                    'contact[mobile_number_2]': {
+                      number: true,
+                      minlength: 10,
+                      maxlength: 10
+                    },
+                    'contact[mobile_number_3]': {
+                      number: true,
+                      minlength: 10,
+                      maxlength: 10
+
+                    },
+                    messages: {
+                      'contact[email]'
+                              : "Please enter a valid email address."
+                    }
+                  });
+                });
+              </script>

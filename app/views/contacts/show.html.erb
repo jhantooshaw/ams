@@ -1,0 +1,76 @@
+<style type="text/css">
+  .control-label{
+    padding-top:0 !important;
+  }
+</style>
+<div class="row">
+  <div class="col-lg-12">
+    <%if flash[:notice] %>
+      <ol class="breadcrumb">          				  	
+        <div style="text-align:center;"><%= flash[:notice] %></div>
+      </ol>
+    <%end%>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+      <header class="panel-heading">
+        <i class="fa fa-arrow-left" onclick="goBack();" style="cursor:pointer;"></i>
+        Contact Detail
+      </header>
+
+      <div class="panel-body">
+        <div class="form-horizontal" style="width:100%;">            
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-6 ">
+              <%= @contact.name %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-6 ">
+              <%= @contact.email %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Mobile Number 1</label>
+            <div class="col-sm-6 ">
+              <%= @contact.mobile_number_1 %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Mobile Number 2</label>
+            <div class="col-sm-6 ">
+              <%= @contact.mobile_number_2 %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Mobile Number 3</label>
+            <div class="col-sm-6 ">
+              <%= @contact.mobile_number_3 %>
+            </div>
+          </div>
+
+          <% @contact.addresses.each_with_index do |address, index| %>
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Address <%= index + 1 %></label>
+              <div class="col-sm-8">
+                <%= address.full_address %>
+                <a class="" href="<%= contact_address_path(@contact, address) %>" title="Show Address" style="margin-left:10px;"><i class="fa fa-eye"></i></a>
+                <a class="" href="<%= edit_contact_address_path(@contact, address) %>" title="Edit Address" style="margin-left:10px;"><i class="fa fa-edit"></i></a>
+                <a class="" href="<%= contact_address_path(@contact, address)%>" data-method="DELETE" data-confirm="Are you sure?" title="Delete Address" style="margin-left:10px;"><i class="fa fa-trash-o"></i></a>
+              </div>                  
+            </div>
+          <%end if @contact.addresses.present?%>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

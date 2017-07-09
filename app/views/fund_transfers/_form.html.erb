@@ -1,0 +1,99 @@
+<style type="text/css">
+  label .error{
+    color:#ff0000;
+  }
+</style>
+<%= form_for @ft, html: {class: "form-horizontal", id: 'fund_transfer_form' } do |f| %>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Name</label>
+      <div class="col-sm-3">
+        <%= f.select :contact_id, Contact.all.collect { |p| [ p.name, p.id ] }, {prompt: 'Select From Contact' }, {class: "form-control"}    %>
+        </div>        
+        <div class="col-sm-3">
+          <%= f.text_field :to_other, class: "form-control", placeholder: 'Enter Other Name'    %>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Amount</label>
+          <div class="col-sm-3">
+            <%= f.text_field :amount, class: "form-control"    %>
+            </div>
+            <label class="col-sm-1 control-label">In / Out</label>
+            <div class="col-sm-2">
+              <%= f.select :asset_type, FundTransfer::AssetType, {}, {class: "form-control"} %>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Transaction Date</label>
+              <div class="col-sm-3 input-group date">
+                <%= f.text_field :transaction_date, class: "form-control"    %> 
+                  <span class="input-group-addon">
+                    <span class="fa fa-calendar">
+                    </span>
+                  </span>
+                </div>
+                <label class="col-sm-1 control-label">Number</label>
+                <div class="col-sm-2">
+                  <%= f.text_field :transaction_number, class: "form-control" %>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"></label>
+                  <div class="col-sm-6">
+                    <%= f.submit class: 'btn btn-primary' %>
+                    </div>
+                  </div>
+                <%end%>
+
+
+                <script type="text/javascript">
+                  $(document).ready(function() {
+                    $("#fund_transfer_form").validate({
+                      rules: {
+                        'fund_transfer[contact_id]': {
+                          required: {
+                            depends: function(element) {
+                              return $("#fund_transfer_to_other").val() === '';
+                            }
+                          }
+                        },
+                        'fund_transfer[to_other]': {
+                          required: {
+                            depends: function(element) {
+                              return $("#fund_transfer_contact_id").val() === '';
+                            }
+                          }
+                        }, 
+                        'fund_transfer[amount]': {
+                          required: true
+                        },
+                        'fund_transfer[asset_type]': {
+                          required: true
+                        },                        
+                        'fund_transfer[transaction_time]': {
+                          required: true
+                        },                        
+                        'fund_transfer[transaction_number]': {
+                          //required: true
+                        }
+                        
+                      }
+                    });
+                    $('.date').datetimepicker({
+                      format: 'DD-MM-YYYY'
+                    });
+                  });
+
+
+
+
+
+
+                </script>
+                </script>

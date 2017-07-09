@@ -1,0 +1,56 @@
+<%= form_for [@contact, @address], html: {class: "form-horizontal", id: 'address_form' } do |f| %>
+    <div class="form-group">
+      <label class="col-sm-2 control-label">Address</label>
+      <div class="col-sm-5">
+        <%= f.text_area :address, class: "form-control", size: "4*50" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label">City</label>
+        <div class="col-sm-2">
+          <%= f.text_field :city, class: "form-control"    %>
+          </div>
+        
+        <label class="col-sm-1 control-label">State</label>
+          <div class="col-sm-2">
+            <%= f.text_field :state, class: "form-control"    %>
+            </div>
+        
+        </div>
+
+        <div class="form-group">
+          
+
+            <label class="col-sm-2 control-label">Country</label>
+            <div class="col-sm-2">
+              <%= f.text_field :country, class: "form-control"    %>
+              </div>
+
+              <label class="col-sm-1 control-label">Pin</label>
+              <div class="col-sm-2">
+                <%= f.text_field :pin, class: "form-control"    %>
+                </div>
+
+              </div>
+
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Other Info</label>
+                <div class="col-sm-5">
+                  <%= f.text_field :other_info, class: "form-control"    %>
+                  </div>
+                </div>
+
+
+
+                <div class="form-group">
+                  <label class="col-sm-2 control-label"></label>
+                  <div class="col-sm-6">
+                    <%= f.submit class: 'btn btn-primary' %>
+                    </div>
+                  </div>
+
+                <%end%>
+
+
