@@ -7,7 +7,7 @@
     <div class="form-group">
       <label class="col-sm-2 control-label">Name</label>
       <div class="col-sm-3">
-        <%= f.select :contact_id, Contact.all.collect { |p| [ p.name, p.id ] }, {prompt: 'Select From Contact' }, {class: "form-control"}    %>
+        <%= f.select :contact_id, Contact.all.collect { |p| [ p.name, p.id ] }, {prompt: 'Select From Contact', selected: params[:contact_id] || @ft.contact_id}, {class: "form-control"}    %>
         </div>        
         <div class="col-sm-3">
           <%= f.text_field :to_other, class: "form-control", placeholder: 'Enter Other Name'    %>
@@ -30,7 +30,8 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">Transaction Date</label>
               <div class="col-sm-3 input-group date">
-                <%= f.text_field :transaction_date, class: "form-control"    %> 
+                <%#= @ft.transaction_date.strftime('%d-%m-%Y') %>
+                <%= f.text_field :transaction_date, class: "form-control" , value: @ft.transaction_date ? dd_mm_yy(@ft.transaction_date) : dd_mm_yy(Date.today) %> 
                   <span class="input-group-addon">
                     <span class="fa fa-calendar">
                     </span>

@@ -1,0 +1,90 @@
+<style type="text/css">
+  .control-label{
+    padding-top:0 !important;
+  }
+  .form-group{
+    border-bottom: none !important;
+  }
+
+  .text-left{
+    text-align:left !important;
+  }
+</style>
+
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+      <header class="panel-heading">
+        <i class="fa fa-arrow-left" onclick="goBack();" style="cursor:pointer;"></i>
+        User Detail
+        <div style="float:right;margin-right:1%;padding:0px 0px;">          
+          <% if @address.present? %>
+            <a class="" href="<%= edit_user_address_path(@user, @address) %>"><i class="fa fa-plus-circle"></i> Edit Address</a>
+          <%else%>
+            <a class="" href="<%= new_user_address_path(@user) %>"><i class="fa fa-plus-circle"></i> Add Address</a>
+          <%end%>
+        </div>
+      </header>
+
+
+      <div class="panel-body">
+        <div class="form-horizontal col-lg-6" style="">            
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-6 control-label text-left">
+              <%= @user.email %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-6 control-label text-left">
+              <%= @user.full_name %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Address</label>
+            <div class="col-sm-8 control-label text-left">
+              <%= @address.full_address %>
+            </div>
+          </div>
+        </div>
+
+
+        <%= form_for @user, html: {class: "form-horizontal col-lg-6", id: 'profile_form' } do |f| %>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">First Name</label>
+              <div class="col-sm-6">
+                <%= f.text_field :first_name, class: "form-control"    %>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-3 control-label">Last Name</label>
+                <div class="col-sm-6">
+                  <%= f.text_field :last_name, class: "form-control"    %>
+                  </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-group">
+                  <label class="col-sm-3 control-label"></label>
+                  <div class="col-sm-6">
+                    <%= f.submit 'Update', class: 'btn btn-primary' %>
+                    </div>
+                  </div>
+
+                <%end%>
+
+
+              </div>
+      
+      <hr>
+            </section>
+          </div>
+        </div>

@@ -1,4 +1,4 @@
-class ContactsController < ApplicationController
+class ContactsController < ApplicationController  
   def index
     @contacts = current_user.contacts.paginate(:page => params[:page])
     respond_to do |format|

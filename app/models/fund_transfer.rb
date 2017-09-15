@@ -7,7 +7,9 @@ class FundTransfer < ApplicationRecord
   
   AssetType = [
     ['CREDIT', 'cr'],
-    ['DEBIT', 'dr']
+    ['DEBIT', 'dr'],
+    ['DEPOSIT', 'dp'],
+    ['LOAN', 'ln']
   ]
   
   #before_create :assign_transaction_number
@@ -34,7 +36,15 @@ class FundTransfer < ApplicationRecord
   end
   
   def debit_amount
-    asset_type == 'dr' ? sprintf('%.2f', amount) : sprintf('%.2f', 0)
+    asset_type == 'dr' ? sprintf('%.2f', amount) : deposit_amount
+  end
+  
+  def loan_amount
+    asset_type == 'ln' ? sprintf('%.2f', amount) : sprintf('%.2f', 0)
+  end
+  
+  def deposit_amount
+    asset_type == 'dp' ? sprintf('%.2f', amount) : sprintf('%.2f', 0)
   end
   
   def transfer_to

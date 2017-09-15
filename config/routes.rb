@@ -3,6 +3,16 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'}, path_names: { sign_in: 'login', sign_out: 'logout'}
   
   authenticated :user do
+    resources :users, only: [:index, :update, :edit] do
+      member do 
+        get 'profile'
+      end
+      collection do 
+        patch 'update_password'
+      end
+      resources :addresses
+    end
+    
     resources :contacts do
       collection do
         get 'search'

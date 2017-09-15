@@ -1,11 +1,6 @@
 <div class="row">
   <div class="col-lg-12">
-    <h4 class="page-header"><i class="fa fa-file"></i> Contact Dashboard</h4>
-    <%if flash[:notice] %>
-      <ol class="breadcrumb">          				  	
-        <div style="text-align:center;"><%= flash[:notice] %></div>
-      </ol>
-    <%end%>
+    <h4 class="page-header"><i class="fa fa-file"></i> Contact Dashboard</h4>    
   </div>
 </div>
 
@@ -39,6 +34,7 @@
                   <a class="btn btn-info" href="<%= contact_path(contact) %>" title="Show Contact"><i class="fa fa-eye"></i></a>
                   <a class="btn btn-success" href="<%= edit_contact_path(contact) %>" title="Edit Contact"><i class="fa fa-edit"></i></a>
                   <a class="btn btn-info" href="<%= new_contact_address_path(contact) %>" title="Add Address"><i class="icon_contacts_alt"></i></a>
+                  <a class="btn btn-success" href="<%= new_fund_transfer_path(contact_id: contact.id) %>" title="Add Fund"><i class="fa fa-money"></i></a>
                   <a class="btn btn-danger" href="<%= contact_path(contact)%>" data-method="DELETE" data-confirm="Are you sure?" title="Delete Contact"><i class="fa fa-trash-o"></i></a>
                 </div>
               </td>

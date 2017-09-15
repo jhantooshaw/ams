@@ -3,7 +3,7 @@ class FundTransfersController < ApplicationController
   
   def index
     @fts = current_user.fund_transfers.paginate(:page => params[:page])    
-    @tot_cr, @tot_dr = current_user.monthly_cr_dr    
+    @tot_cr, @tot_dr, @tot_dp, @tot_ln = current_user.monthly_transactions    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @fts }
